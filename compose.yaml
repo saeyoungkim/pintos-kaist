@@ -1,0 +1,20 @@
+services:
+  linux-server:
+    build:
+      context: .
+      args:
+        - USERNAME=workspace
+        - PASSWORD=workspace
+        - UID=20002
+        - GID=20002 
+    ports:
+      - "20022:22"
+    hostname: workspace
+    volumes: 
+      - .:/home/workspace/pintos-kaist
+      - linux-server-workspace:/home/workspace
+      - linux-server-ssh:/etc/ssh
+
+volumes:
+  linux-server-workspace:
+  linux-server-ssh:
